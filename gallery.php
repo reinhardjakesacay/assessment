@@ -3,10 +3,10 @@
 
     if (!empty($_SESSION["id"])) {
         $id = $_SESSION["id"];
-        $result = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
+        $result = mysqli_query($conn, "SELECT concat(fname, ' ', lname) as full_name, number FROM users WHERE id = '$id'");
         $row = mysqli_fetch_assoc($result);
     }else {
-        header("Location: login.php");
+        //header("Location: login.php");
     }
 
 ?>
@@ -27,7 +27,14 @@
         <div class="logo">Logo</div>
         <nav class="head">
             <ul>
-                <li><a href="logout.php">Log out</a></li>
+                <li>
+                    <?php if (!empty($_SESSION['id'])) {
+                            echo '<a href="logout.php">Log out</a>';
+                        }else {
+                            echo '<a href="login.php">Log in</a>';
+                        }
+                    ?>
+                </li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="gallery.php">Gallery</a></li>
                 <li><a href="profile.php">Profile</a></li>
@@ -42,12 +49,22 @@
         <div class="project">
             <h2>Project 1</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa amet debitis, quas quaerat perspiciatis officiis fuga voluptatem officia ducimus eos accusamus laudantium temporibus eligendi neque itaque sit repellat modi nihil, totam ea blanditiis. Veniam nulla corporis quo amet tempora harum, vitae exercitationem dolorem labore dolores voluptatem ab, consequuntur voluptatibus quisquam?</p>
-            <p>Created by: <?php echo $row['full_name']; ?></p>
+            <p><?php if (!empty($_SESSION['id'])) {
+                        echo 'Created by:' . $row['full_name'];
+                    }else {
+                        echo "Created by our team";
+                    }
+        //echo $row['full_name']; ?></p>
         </div>
         <div class="project">
             <h2>Project 2</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa amet debitis, quas quaerat perspiciatis officiis fuga voluptatem officia ducimus eos accusamus laudantium temporibus eligendi neque itaque sit repellat modi nihil, totam ea blanditiis. Veniam nulla corporis quo amet tempora harum, vitae exercitationem dolorem labore dolores voluptatem ab, consequuntur voluptatibus quisquam?</p>
-            <p>Created by: <?php echo $row['full_name']; ?></p>
+            <p><?php if (!empty($_SESSION['id'])) {
+                        echo 'Created by:' . $row['full_name'];
+                    }else {
+                        echo "Created by our team";
+                    }
+        //echo $row['full_name']; ?></p>
         </div>
     </div>
 
@@ -59,6 +76,7 @@
                 <li><a href="#">Instagram</a></li>
             </ul>
         </nav>
+        <p class="p_footer">@ All Copyright Reserved</p>
     </footer>
 </body>
 </html>

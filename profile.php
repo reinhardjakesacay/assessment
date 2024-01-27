@@ -3,7 +3,7 @@
 
     if (!empty($_SESSION["id"])) {
         $id = $_SESSION["id"];
-        $result = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
+        $result = mysqli_query($conn, "SELECT concat(fname, ' ', lname) as full_name FROM users WHERE id = '$id'");
         $row = mysqli_fetch_assoc($result);
     }else {
         header("Location: login.php");
@@ -53,6 +53,7 @@
                 <li><a href="#">Instagram</a></li>
             </ul>
         </nav>
+        <p class="p_footer">@ All Copyright Reserved</p>
     </footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
 
     if (!empty($_SESSION["id"])) {
         $id = $_SESSION["id"];
-        $result = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
+        $result = mysqli_query($conn, "SELECT concat(fname, ' ', lname) as full_name, number FROM users WHERE id = '$id'");
         $row = mysqli_fetch_assoc($result);
     }else {
         header("Location: login.php");
@@ -40,7 +40,7 @@
     <div class="container contact">
         <h2>Contact Us</h2>
         <p>Name: <?php echo $row['full_name']; ?></p>
-        <p>Phone Number: 09XXXXXXXX</p>
+        <p>Phone Number: <?php echo $row['number']; ?></p>
         <p>Address: San Jose, 1st Street</p>
         <div class="form">
             <form>
@@ -62,6 +62,7 @@
                 <li><a href="#">Instagram</a></li>
             </ul>
         </nav>
+        <p class="p_footer">@ All Copyright Reserved</p>
     </footer>
 </body>
 </html>

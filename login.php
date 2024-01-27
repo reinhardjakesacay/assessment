@@ -1,4 +1,5 @@
 <?php 
+//session_start();
 require "config.php";
 
     if (!empty($_SESSION['id'])) {
@@ -32,6 +33,7 @@ require "config.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Log In</title>
 </head>
@@ -40,30 +42,30 @@ require "config.php";
     <header>
         <div class="header">
         <div class="logo">Logo</div>
-        <!-- <nav class="head">
+        <nav class="head">
             <ul>
-                <li><a href="contact.php">Contact</a></li>
+                <!-- <li><a href="contact.php">Contact</a></li> -->
                 <li><a href="gallery.php">Gallery</a></li>
-                <li><a href="profile.php">Profile</a></li>
+                <!-- <li><a href="profile.php">Profile</a></li> -->
                 <li><a href="home.php">Home</a></li>
             </ul>
-        </nav> -->
+        </nav>
     </div>
     </header>
 
     <div class="container">
         <form action="login.php" method="post">
-            <div class="form_group">
-                <input type="text" name="usernameEmail" placeholder="Username or Email:" class="form-control">
+            <div class="form-group">
+                <input type="text" name="usernameEmail" placeholder="Username or Email:">
             </div>
-            <div class="form_group">
+            <div class="form-group">
                 <input type="password" name="password" placeholder="Password:">
             </div>
-            <div class="form_group">
+            <div class="form-group">
                 <input type="submit" name="submit" value="Login">
             </div>
         </form>
-        <a href="registration.php"><button>Register</button></a>
+        <a href="registration.php"><button class="btn btn-primary">Register</button></a>
     </div>
     
     <footer>
@@ -74,6 +76,7 @@ require "config.php";
                 <li><a href="#">Instagram</a></li>
             </ul>
         </nav>
+        <p class="p_footer">@ All Copyright Reserved</p>
     </footer>
 </body>
 </html>
